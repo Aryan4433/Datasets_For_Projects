@@ -1,0 +1,37 @@
+
+-----------------------------------------------------------------------
+Check Icon Url = "https://drive.google.com/uc?export=view&id=1mcmb1peVHoaU5XL2bYXinZtW9sv2bNG4"
+-----------------------------------------------------------------------
+For Sale Icon On - 
+
+SalesOn = var selected = SELECTEDVALUE(Sale_Option[Name])
+var _url = "https://drive.google.com/uc?export=view&id=1mcmb1peVHoaU5XL2bYXinZtW9sv2bNG4"
+return IF(selected="1",_url)
+
+
+-----------------------------------------------------------------------
+
+For Units Icon On - 
+
+SalesOn = var selected = SELECTEDVALUE(Sale_Option[Name])
+var _url = "https://drive.google.com/uc?export=view&id=1mcmb1peVHoaU5XL2bYXinZtW9sv2bNG4"
+return IF(selected="2",_url)
+
+-----------------------------------------------------------------------
+
+Seller Count = CALCULATE([Sale_Units],ALL('amazon-fashion'[Category]))
+= var val = CALCULATE(COUNT('amazon-fashion'[seller_id]),CONTAINSSTRING(Amazon[Status],"Delivered"))
+return IF(val=BLANK(),"0",val)
+
+-----------------------------------------------------------------------
+
+Filter Sale = var selecting = SELECTEDVALUE(Sale_Option[Type])
+var _units =SUM(Amazon[Qty])
+var _sale = SUM(Amazon[Total_Ammount])
+return IF(selecting="1",_sale,_units)
+
+
+
+
+
+
